@@ -24,6 +24,7 @@ class ViewController: UIViewController, ResponseHandler, UITextViewDelegate, Sen
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
 
+    // 変換動作：APIリクエストを行う
     @IBAction
     func actionConvert() {
         if let japanese = japaneseField.text, !japanese.isEmpty {
@@ -75,6 +76,7 @@ class ViewController: UIViewController, ResponseHandler, UITextViewDelegate, Sen
         stopAnimating()
     }
     
+    // 変換失敗時の処理
     func failed(message: String) {
         let alert = UIAlertController(title: "失敗", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
@@ -83,7 +85,17 @@ class ViewController: UIViewController, ResponseHandler, UITextViewDelegate, Sen
         stopAnimating()
     }
     
+    // 履歴画面から受け取った変換を表示
+    func send(original: String, converted: String) {
+        japaneseField.text = original
+        hiraganaField.text = converted
+        
+        guideLabel.isHidden = true
+    }
+    
+    // MARK: - TextView
     func textViewDidBeginEditing(_ textView: UITextView) {
+        // 入力テキストビューを強調する
         textView.borderWidth = 3
         guideLabel.isHidden = true
     }
@@ -95,13 +107,7 @@ class ViewController: UIViewController, ResponseHandler, UITextViewDelegate, Sen
         }
     }
     
-    func send(original: String, converted: String) {
-        japaneseField.text = original
-        hiraganaField.text = converted
-        
-        guideLabel.isHidden = true
-    }
-    
+    // MARK: - Selector
     @objc
     func tapGesture(_ sender: UITapGestureRecognizer){
         self.view.endEditing(true)

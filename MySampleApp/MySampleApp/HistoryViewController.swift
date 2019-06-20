@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 選択された履歴の内容を渡すprotocol
 protocol SendHistoryData {
     func send(original: String, converted: String)
 }
@@ -24,7 +25,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     // MARK: - TableView
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return historyArray.count
     }

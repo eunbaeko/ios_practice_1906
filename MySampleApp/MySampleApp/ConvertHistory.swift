@@ -9,7 +9,10 @@
 import Foundation
 
 struct ConvertHistory {
+    // UserDefault保存KEY
     public static let preferenceKey = "ConvertHistory"
+    // 履歴DictionaryKEY：入力値
     public static let original = "Original"
+    // 履歴DictionaryKEY：変換結果
     public static let converted = "Converted"
 }

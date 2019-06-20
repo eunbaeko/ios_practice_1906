@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+// HTTP通信結果を渡すprotocol
 protocol ResponseHandler {
     func done(result: String)
     func failed(message: String)
